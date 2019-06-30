@@ -54,12 +54,20 @@ def signup_validate():
      if user_error or pass_error or verify_error or email_error:
           password = ""
           verify = ""
-
-
-     return render_template("index.html", username= username,
+          return render_template("index.html", username= username,
            password = password, verify = verify, email = email,
            user_error = user_error, pass_error = pass_error,
            verify_error = verify_error, email_error = email_error)
+     else:
+          return redirect("/welcome?username={0}".format(username))
+            
+
+@app.route("/welcome")
+def welcome():
+     username = request.args.get("username")
+     return render_template("welcome.html", username = username)
+
+
 
 
 
