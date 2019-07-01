@@ -1,6 +1,5 @@
 from flask import Flask, request, redirect, render_template
-import cgi
-import os
+
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -66,9 +65,6 @@ def signup_validate():
 def welcome():
      username = request.args.get("username")
      return render_template("welcome.html", username = username)
-
-
-
 
 
 app.run()
